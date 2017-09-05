@@ -6,7 +6,7 @@ layout: default
   {% for post in site.posts %}
   <ul>
     <li>
-      <a href="{{ site.url }}/{{ post.url }}">{{ post.title }}</a>
+      <a href="{{ site.url }}/CGTrabalhos/{{ post.url }}">{{ post.title }}</a>
       {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
     </li>
   </ul>
