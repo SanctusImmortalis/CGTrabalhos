@@ -214,6 +214,6 @@ title: Trabalho 1 - Pontos, Linhas e triângulos
   
   ![Triângulo colorido](https://raw.githubusercontent.com/SanctusImmortalis/CGTrabalhos/master/docs/assets/15.png)
   
-# Conclusão
+<h1> Conclusão</h1>
 
   Com esse trabalho foi possível entender melhor o algoritmo de Bresenham visto em sala, e também como funciona o acesso à memória de vídeo. Também aprendi sobre interpolação de cores. A maior dificuldade foi fazer a interpolação, pois originalmente tentei fazer sem usar ponto flutuante, mas esse método se mostrou muito complicado e acabou gerando uma gambiarra. Ainda me pergunto, no entanto, se há um jeito mais eficiente de se calcular a interpolação.
