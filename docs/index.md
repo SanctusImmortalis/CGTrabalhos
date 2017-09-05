@@ -10,5 +10,6 @@ layout: default
       <br>{{ post.excerpt }}
     </li>
   </ul>
+  {% endfor %}
  </section>
   
