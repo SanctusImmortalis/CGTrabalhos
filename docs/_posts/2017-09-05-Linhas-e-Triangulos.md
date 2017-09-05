@@ -41,7 +41,16 @@ title: Trabalho 1 - Pontos, Linhas e triângulos
   ```
   
   Onde WIDTH é a largura da tela em pixels, nesse caso, 512.
+  
+  Depois, é só colocar os valores dos campos r, g, b, a da estrutura em seus respectivos lugares
+  
+  ```
+  FBptr[index] = r
+  FBptr[index + 1] = g
+  FBptr[index + 2] = b
+  FBptr[index + 3] = a
+  ```
 
   Agora, já podemos desenhar Pixels na tela. Exemplo: tornar todos os pixels da tela vermelhos usando laços de repetição e PutPixel:
   
-  ![Pixels vermelhos](/CGTrabalhos/docs/assets/2.jpg)
+  ![Pixels vermelhos](https://github.com/SanctusImmortalis/CGTrabalhos/blob/master/docs/assets/2.png)
