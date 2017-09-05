@@ -8,3 +8,4 @@ Como primeiro trabalho da disciplina de Introdução à Computação Gráfica, t
 1. Rasterização de pontos (função PutPixel)
 2. Rasterização de linhas (função DrawLine)
 3. Desenho das bordas de um triângulo (função DrawTriangle)
+<!--more-->
