@@ -4,9 +4,10 @@ title: Site oficial dos projetos de CG de Nelson Guedes Barroca (AKA Sanctus Imm
 ---
 
 
-{% for post in site.posts %}
+  {% for post in site.posts %}
 
 
-* [{{ post.title }}]({{ post.url }})
+  *  [{{ post.title }}]({{ post.url }})
+    {{ post.excerpt }}
 
-{% endfor %}
+  {% endfor %}
