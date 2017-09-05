@@ -7,7 +7,7 @@ layout: default
   <ul>
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
-      <br>{{ post.excerpt }}
+      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
     </li>
   </ul>
   {% endfor %}
