@@ -53,4 +53,4 @@ title: Trabalho 1 - Pontos, Linhas e triângulos
 
   Agora, já podemos desenhar Pixels na tela. Exemplo: tornar todos os pixels da tela vermelhos usando laços de repetição e PutPixel:
   
-  ![Pixels vermelhos](https://github.com/SanctusImmortalis/CGTrabalhos/blob/master/docs/assets/2.png)
+  ![Pixels vermelhos](https://raw.githubusercontent.com/SanctusImmortalis/CGTrabalhos/master/docs/assets/2.png)
