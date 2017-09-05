@@ -3,6 +3,8 @@ layout: default
 ---
 
 <section>
+  <h1> Posts:</h1>
+  <br>
   {% for post in site.posts %}
   <ul>
     <li>
