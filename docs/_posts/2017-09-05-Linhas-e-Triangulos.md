@@ -170,3 +170,46 @@ title: Trabalho 1 - Pontos, Linhas e triângulos
     <td>Sim</td>
   </tr>
 </table>
+
+  Após isso, é só fazer a função DrawLine decidir em qual octante estamos desenhando, e chamar a variante correta do algoritmo de Bresenham.
+  
+  Com as linhas em si corretamente implementadas, precisamos fazer interpolação de cores. Quando definimos os pontos inicial e final, também definimos a cor de cada um deles. Quando esses pontos são rasterizado, devem ter essa cor. No entanto, como deveriamos colorir os pontos restantes? A resposta é interpolação linear. Cada ponto tem uma cor baseada na sua posição em relação às extremidades. Para implementar isso, calculamos a taxa de variação de cada canal de cor em relação a X (em relação a Y quando Dy > Dx):
+  
+  ```C++
+  double dr = (p2.r - p1.r)/((double) dx);
+  double dg = (p2.g - p1.g)/((double) dx);
+  double db = (p2.b - p1.b)/((double) dx);
+  double da = (p2.a - p1.a)/((double) dx);
+  ```
+  E então, durante o loop, incrementamos os valores de r, g, b, a do ponto por essas taxas de variação:
+  
+  ```C++
+  r += dr;
+  g += dg;
+  b += db;
+  a += da;
+  p.r = (unsigned char)(r);
+  p.g = (unsigned char)(g);
+  p.b = (unsigned char)(b);
+  p.a = (unsigned char)(a);
+  ```
+  
+  E agora, podemos desenhar linhas em todos os octantes com interpolação de cores:
+  
+  ![Todas as linhas](https://raw.githubusercontent.com/SanctusImmortalis/CGTrabalhos/master/docs/assets/17.png)
+  
+  Finalmente, desenhar as bordas de um triângulo. Deve-se notar que rasterizar um triângulo também inclui preenchê-lo, o que não estamos fazendo aqui.
+  
+  Para desenhar as bordas de um triângulo precisamos apenas dar os três vértices do triângulo e desenhar linhas entre eles. É assim que se faz um triângulo com três pontos:
+  
+  ```C++
+  void DrawTriangle(Pixel p1, Pixel p2, Pixel p3){
+    DrawLine(p1, p2);
+    DrawLine(p2, p3);
+    DrawLine(p3, p1);
+  }
+  ```
+  
+  ![Triângulo vermelho](https://raw.githubusercontent.com/SanctusImmortalis/CGTrabalhos/master/docs/assets/13.png)
+  
+  ![Triângulo colorido](https://raw.githubusercontent.com/SanctusImmortalis/CGTrabalhos/master/docs/assets/15.png)
