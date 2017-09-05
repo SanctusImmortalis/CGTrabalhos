@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Trabalho 1 - Pontos, Linhas e triângulos
 ---
 
