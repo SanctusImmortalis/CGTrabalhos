@@ -71,4 +71,102 @@ title: Trabalho 1 - Pontos, Linhas e triângulos
     x += 1
   ```
   
-  No entanto, esse algoritmo contém duas operações caríssimas: produto de ponto flutuante e arredondamento.
+  No entanto, esse algoritmo contém duas operações caríssimas: produto de ponto flutuante e arredondamento. Vimos em sala que é possível usar alguns truques matemáticos para gerar um algoritmo equivalente que utiliza apenas somas e comparações (dentro do loop. O custo de usar operações um pouco mais caras uma ou duas vezes fora do loop é negligível). Esse é o algoritmo de Bresenham, em C++:
+  
+  ```C++
+  void DrawLine(Pixel p1, Pixel p2){
+    int dx = p2.x - p1.x;
+    int dy = p2.y - p1.y;
+    int d = 2* dy - dx;
+    int incr_e = 2 * dy;
+    int incr_ne = 2 * (dy - dx);
+
+    Pixel p = p1;
+    PutPixel(p);
+    while(p.x < p2.x){
+      if (d<=0) {
+        d += incr_e;
+        p.x++;
+      }else{
+        d += incr_ne;
+        p.x++;
+        p.y++;
+      }
+
+
+      PutPixel(p);
+  }
+  ```
+  
+  Essa função em C resolve o problema... para um oitavo das linhas possíveis. Para qualquer linha cujo ângulo em relação ao eixo X seja 45°, ou com x1<x0 ou y1<y0, esse algoritmo é incapaz de nos dar o resultado certo. No entanto, adaptar esse algoritmo para os outros octantes é simples.
+  
+  Para os casos onde x1 < x0, é só definir dx como:
+  ```
+  dx = x0 - x1
+  ```
+  e decrementar o X no loop.
+  
+  De forma similar, quando y1 < y0:
+  ```
+  dy = y0 - y1
+  ```
+  e também decrementar o y.
+  
+  Quando o ângulo em relação ao eixo X for maior que 45°, isso significa que o valor de Y dos pixels muda mais rápido que o valor de X, ou seja, Dx < Dy. Então é só trocar todas as ocorrências de x e dx por y e dy, e vice-versa. Combinando essas alterações de diversas maneiras, é possível gerar todos os octantes:
+  
+<table style="width:100%">
+  <tr>
+    <th>Octante</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Dx maior que Dy</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>+</td>
+    <td>+</td>
+    <td>Sim</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>+</td>
+    <td>+</td>
+    <td>Não</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>-</td>
+    <td>+</td>
+    <td>Não</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>-</td>
+    <td>+</td>
+    <td>Sim</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sim</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Não</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>+</td>
+    <td>-</td>
+    <td>Não</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>+</td>
+    <td>-</td>
+    <td>Sim</td>
+  </tr>
+</table>
