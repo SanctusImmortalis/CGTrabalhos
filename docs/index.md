@@ -8,8 +8,9 @@ layout: default
   {% for post in site.posts %}
   <ul>
     <li>
-      <a href="{{ site.url }}/CGTrabalhos{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+      <b><a href="{{ site.url }}/CGTrabalhos{{ post.url }}">{{ post.title }}</a></b>
+      <br>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+      <br><a href="{{ site.url }}/CGTrabalhos{{ post.url }}">Read more</a>
     </li>
   </ul>
   {% endfor %}
